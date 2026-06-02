@@ -10,6 +10,7 @@
 //! that global is configured before any handler runs.
 
 use std::{env, io::Write, path::Path};
+use std::path::PathBuf;
 
 use clap::{
     Parser, Subcommand,
@@ -438,6 +439,15 @@ enum Commands {
         hide = true
     )]
     Hooks(command::hooks::HooksArgs),
+    Stats {
+        /// Output in JSON format
+        #[arg(long)]
+        json: bool,
+        
+        /// Directory to analyze (defaults to current directory)
+        #[arg(short, long)]
+        path: Option<PathBuf>,
+    },
 }
 
 #[derive(Subcommand, Debug)]
