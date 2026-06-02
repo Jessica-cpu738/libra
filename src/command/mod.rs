@@ -250,5 +250,7 @@ mod tests {
             let (msg_, _) = parse_commit_msg(&msg_gpg);
             assert_eq!(msg, msg_);
         }
+        pub mod stats;
+pub use stats::run as run_stats;
     }
 }
