@@ -1214,6 +1214,9 @@ pub async fn parse_async(args: Option<&[&str]>) -> CliResult<()> {
         Commands::Publish(cmd_args) => command::publish::execute_safe(cmd_args, &output).await?,
         Commands::Agent(cmd_args) => command::agent::execute_safe(cmd_args, &output).await?,
         Commands::Hooks(cmd_args) => command::hooks::execute_safe(cmd_args, &output).await?,
+        Commands::Stats { json, path } => {
+            command::run_stats(json, path).await?;
+        }
         Commands::Bisect(bisect_cmd) => command::bisect::execute_safe(bisect_cmd, &output).await?,
     }
 
